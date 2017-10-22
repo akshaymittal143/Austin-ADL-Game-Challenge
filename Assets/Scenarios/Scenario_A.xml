@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<scenario id="A">
+
+  <setup
+    background="Buildings"
+    dialog-bg="Test Dialog Bg"
+    music="Chill Song" />
+
+  <character-entrance
+    id="Yu"
+    alias="Normal Yu"
+    mode="fade-in"
+    root-position="left"
+    speed="normal"
+    pose="Idle" />
+
+  <character-entrance
+    id="Yu"
+    alias="Evil Yu"
+    mode="fade-in"
+    root-position="right"
+    speed="normal"
+    pose="Idle" />
+
+
+</scenario>

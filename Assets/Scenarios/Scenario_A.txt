@@ -1,0 +1,77 @@
+"0" ----------------------------------------
+
+~ use scenario background "Buildings"
+~ use dialog background "Test Dialog Bg"
+~ use music "Chill Song"
+
+~ character "Yu" fades in left normally with pose "Idle" as "Normal Yu"
+~ character "Yu" eases in right normally with pose "Reaching_Out" as "Evil Yu"
+
+-------------------------------------------
+
+"1" ----------------------------------------
+
+~ "Normal Yu" speaks
+- What are you talking about stupid?
+- I'm the real Yu!
+
+~ "Evil Yu" speaks
+- No, what are YOU talking about?!
+- I'm the real Yu!
+
+~ "Normal Yu" speaks
+- How can you be the real me if I'm the real me??
+
+~ "Evil Yu" speaks
+- ...
+- What???
+
+~ "Normal Yu" speaks
+- Exactly!
+
+~ show options
+- The left is the real Yu => "2"
+- The right is the real Yu => "3"
+- ... => "2"
+
+-------------------------------------------
+
+"2" ----------------------------------------
+
+~ "Normal Yu" speaks
+- Hah! The player can read!
+
+~ "Evil Yu" speaks
+- Whatever, none of this matters anyway...
+
+~ "Normal Yu" fades out fast
+~ "Evil Yu" eases out slow
+
+-------------------------------------------
+
+"3" ----------------------------------------
+
+~ "Normal Yu" speaks
+- Hey! Player! Can't you read our labels???
+
+~ change pose for "Evil Yu" to "Confident"
+
+~ "Evil Yu" speaks
+- HAHAH!!! No the player is right, I AM the real Yu!
+
+~ go to conversation "4"
+
+-------------------------------------------
+
+"4" ----------------------------------------
+
+~ "Normal Yu" speaks
+- Well whatever, none of this matters anyway.
+
+~ "Evil Yu" speaks
+- I'm happy.
+
+~ "Normal Yu" fades out slow
+~ "Evil Yu" eases out normal
+
+-------------------------------------------
