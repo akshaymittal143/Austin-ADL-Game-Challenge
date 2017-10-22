@@ -67,13 +67,14 @@ public class ScenarioManager : MonoBehaviour
 		string patBackgroundImage = @"~\s*use scenario background ""\s*(.*?)\s*""";
 		string patDialogBackground = @"~\s*use dialog background ""\s*(.*?)\s*""";
 		string patMusic = @"~\s*use music ""\s*(.*?)\s*""";
-		string patCharacterAction = @"~\s*character ""(.*?)"" (eases|fades){0,1} (in|out){0,1} (left|right|center){0,1} (slowly|normally|fast){0,1} with pose ""(.*?)""";
+		string patCharacterAction = @"~\s*character ""(.*?)""\s*(eases|fades){0,1}\s*(in|out){0,1}\s*(left|right|center){0,1}\s*(slowly|normally|fast){0,1}\s*with pose ""(.*?)""";
 		string patSwitchCharacter = @"~\s*""(.*?)"" speaks";
 		string patWriteParagraphCommand = @"-\s*(.*)";
 
 		Regex r;
 		Match m;
 		bool waitingForContentFromCharacter = false;
+		string speakingCharacterName = "";
 
 		foreach (string line in body.Split('\n')) {
 
@@ -122,9 +123,14 @@ public class ScenarioManager : MonoBehaviour
 			if (m.Success)
 			{
 				// Change pose action.
-				if (m.Groups.Count == 2) {
+				if (!m.Groups[2].Success) {
 					string characterName = m.Groups[1].Value;
-					string characterPose = m.Groups[2].Value;
+					string characterPose = m.Groups[6].Value;
+
+					ChangeCharacterPoseConversationAction action = new ChangeCharacterPoseConversationAction();
+					action.characterName = characterName;
+					action.characterPose = characterPose;
+					conversation.AddAction(action);
 
 					Debug.LogFormat("{0} will change pose to {1}", characterName, characterPose);
 				
@@ -136,6 +142,16 @@ public class ScenarioManager : MonoBehaviour
 					string screenPosition = m.Groups[4].Value;
 					string speed = m.Groups[5].Value;
 					string characterPose = m.Groups[6].Value;
+
+					if (inOut == "in") {
+						EaseInCharacterConversationAction action = new EaseInCharacterConversationAction();
+						action.characterName = characterName;
+						action.SetEaseMode(easeMode);
+						action.SetRootPosition(screenPosition);
+						action.SetEaseSpeed(speed);
+						action.startPose = characterPose;
+						conversation.AddAction(action);
+					}
 
 					Debug.LogFormat("{0} will {1} {2} {3} at {4} with pose {5}", characterName, easeMode, inOut, speed, screenPosition, characterPose);
 				}
@@ -152,6 +168,7 @@ public class ScenarioManager : MonoBehaviour
 				if (m.Success) {
 					WriteParagraphConversationAction action = new WriteParagraphConversationAction();
 					action.message = m.Groups[1].Value;
+					action.speakingCharacter = speakingCharacterName;
 					action.dialogTextBox = dialogText;
 					conversation.AddAction(action);
 					Debug.LogFormat("Will write paragraph: {0}", action.message);
@@ -167,6 +184,7 @@ public class ScenarioManager : MonoBehaviour
 					conversation.AddAction(action);
 					Debug.LogFormat("Will switch to character: {0}", action.characterName);
 					waitingForContentFromCharacter = true;
+					speakingCharacterName = action.characterName;
 				}
 			}
 		}

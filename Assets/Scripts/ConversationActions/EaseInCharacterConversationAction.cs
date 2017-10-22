@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class EaseInCharacterConversationAction : ConversationAction
 {
@@ -17,44 +19,93 @@ public class EaseInCharacterConversationAction : ConversationAction
 		Fast
 	}
 
-	public enum RootPosition
-	{
-		Left,
-		Center,
-		Right
-	}
-
-	public AnimationCurve easeIn;
+	public AnimationCurve easeInCurve;
 	public EaseMode easeInMode;
 	public float easeInSpeed;
-	public AnimationCurve easeOut;
-	public EaseMode easeOutMode;
 	public string characterName;
-	public string characterAlias;
-	public RootPosition rootPosition;
+	public CharacterManager.RootPosition rootPosition;
+	public string startPose;
 
 	public override IEnumerator Execute()
 	{
-		Debug.Log("Easing in character " + characterName);
+		CharacterManager.instance.LoadCharacter(rootPosition, characterName, startPose);
+
+		// TODO Position off screen.
+		// TODO Ease in character.
 		yield return null;
 	}
 
-	public float EaseSpeedToSeconds(EaseSpeed easeSpeed)
+	public void SetEaseSpeed(string easeSpeed)
 	{
 		switch (easeSpeed) {
-		case EaseSpeed.Slow:
+		case "slowly":
 			{
-				return 3.0f;
+				easeInSpeed = 3.0f;
+				break;
 			}
-		case EaseSpeed.Normal:
+		case "normally":
 			{
-				return 1.0f;
+				easeInSpeed = 1.0f;
+				break;
 			}
-		case EaseSpeed.Fast:
+		case "fast":
 			{
-				return 0.4f;
+				easeInSpeed = 0.4f;
+				break;
+			}
+		default:
+			{
+				Debug.LogFormat("EaseInCharacterConversationAction:: did not understand speed {0}.", easeSpeed);
+				easeInSpeed = 0f;
+				break;
 			}
 		}
-		return 0f;
+	}
+
+	public void SetEaseMode(string mode)
+	{
+		switch (mode) {
+		case "slides":
+			{
+				easeInMode = EaseMode.Slide;
+				break;
+			}
+		case "fades":
+			{
+				easeInMode = EaseMode.Fade;
+				break;
+			}
+		default:
+			{
+				Debug.LogFormat("EaseInCharacterConversationAction:: did not understand ease mode {0}", mode);
+				break;
+			}
+		}
+	}
+
+	public void SetRootPosition(string position)
+	{
+		switch (position) {
+		case "left":
+			{
+				rootPosition = CharacterManager.RootPosition.Left;
+				break;
+			}
+		case "center":
+			{
+				rootPosition = CharacterManager.RootPosition.Center;
+				break;
+			}
+		case "right":
+			{
+				rootPosition = CharacterManager.RootPosition.Right;
+				break;
+			}
+		default:
+			{
+				Debug.LogFormat("EaseInCharacterConversationAction:: did not understand root position {0}", position);
+				break;
+			}
+		}
 	}
 }

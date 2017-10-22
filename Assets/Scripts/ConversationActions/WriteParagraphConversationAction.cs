@@ -7,7 +7,8 @@ using TMPro;
 public class WriteParagraphConversationAction : ConversationAction
 {
 	public string message;
-	public float timeBetweenCharacters = 0.1f;
+	public string speakingCharacter;
+	public float timeBetweenCharacters = 0.06f;
 
 	public TMP_Text dialogTextBox;
 
@@ -16,7 +17,7 @@ public class WriteParagraphConversationAction : ConversationAction
 	public override IEnumerator Execute()
 	{
 		// Clear text box.
-		dialogTextBox.text = "";
+		dialogTextBox.text = speakingCharacter + ": ";
 
 		// Do for all characters.
 		int	 messageIndex = 0;

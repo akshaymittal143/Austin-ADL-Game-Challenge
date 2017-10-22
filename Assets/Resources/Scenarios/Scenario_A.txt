@@ -7,6 +7,8 @@
 ~ character "Normal Yu" fades in left normally with pose "Idle"
 ~ character "Evil Yu" eases in right normally with pose "Reaching_Out"
 
+~ character "Normal Yu" with pose "Idle"
+
 ~ "Normal Yu" speaks
 - What are you talking about stupid?
 - I'm the real Yu!
