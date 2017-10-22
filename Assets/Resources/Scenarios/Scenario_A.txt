@@ -1,19 +1,17 @@
-"0" ----------------------------------------
+"1" ----------------------------------------
 
 ~ use scenario background "Buildings"
 ~ use dialog background "Test Dialog Bg"
 ~ use music "Chill Song"
 
-~ character "Yu" fades in left normally with pose "Idle" as "Normal Yu"
-~ character "Yu" eases in right normally with pose "Reaching_Out" as "Evil Yu"
-
--------------------------------------------
-
-"1" ----------------------------------------
+~ character "Normal Yu" fades in left normally with pose "Idle"
+~ character "Evil Yu" eases in right normally with pose "Reaching_Out"
 
 ~ "Normal Yu" speaks
 - What are you talking about stupid?
 - I'm the real Yu!
+
+~ character "Normal Yu" with pose "Confident"
 
 ~ "Evil Yu" speaks
 - No, what are YOU talking about?!
@@ -38,6 +36,10 @@
 
 "2" ----------------------------------------
 
+~ use scenario background "Not Buildings"
+~ wait 4s
+~ use scenario background "Buildings"
+
 ~ "Normal Yu" speaks
 - Hah! The player can read!
 
@@ -45,7 +47,7 @@
 - Whatever, none of this matters anyway...
 
 ~ "Normal Yu" fades out fast
-~ "Evil Yu" eases out slow
+~ "Evil Yu" eases out slowly
 
 -------------------------------------------
 
@@ -71,7 +73,7 @@
 ~ "Evil Yu" speaks
 - I'm happy.
 
-~ "Normal Yu" fades out slow
-~ "Evil Yu" eases out normal
+~ "Normal Yu" fades out slowly
+~ "Evil Yu" eases out normally
 
 -------------------------------------------
