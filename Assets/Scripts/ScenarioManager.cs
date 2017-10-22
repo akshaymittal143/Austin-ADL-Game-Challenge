@@ -15,6 +15,8 @@ public class ScenarioManager : MonoBehaviour
 
 	Conversation currentConversation;
 
+	ShowOptionsConversationAction currentOptionsAction;
+
 	void Awake()
 	{
 		LoadScenario("Scenario_A");
@@ -70,10 +72,14 @@ public class ScenarioManager : MonoBehaviour
 		string patCharacterAction = @"~\s*character ""(.*?)""\s*(eases|fades){0,1}\s*(in|out){0,1}\s*(left|right|center){0,1}\s*(slowly|normally|fast){0,1}\s*with pose ""(.*?)""";
 		string patSwitchCharacter = @"~\s*""(.*?)"" speaks";
 		string patWriteParagraphCommand = @"-\s*(.*)";
+		string patOptionCommand = @"~ show options";
+		string patOption = @"-(.*?)=> ""(.*?)""";
+		string patConversationLink = @"~\s*go to conversation ""(.*?)""";
 
 		Regex r;
 		Match m;
 		bool waitingForContentFromCharacter = false;
+		bool waitingForFullOptions = false;
 		string speakingCharacterName = "";
 
 		foreach (string line in body.Split('\n')) {
@@ -90,6 +96,7 @@ public class ScenarioManager : MonoBehaviour
 				conversation.AddAction(action);
 				Debug.LogFormat("Background will change to {0}", m.Groups[1].Value);
 				waitingForContentFromCharacter = false;
+				waitingForFullOptions = false;
 				continue; // Go to next line.
 			}
 
@@ -104,6 +111,7 @@ public class ScenarioManager : MonoBehaviour
 				conversation.AddAction(action);
 				Debug.LogFormat("Dialog background will change to {0}", m.Groups[1].Value);
 				waitingForContentFromCharacter = false;
+				waitingForFullOptions = false;
 				continue; // Go to next line.
 			}
 
@@ -114,6 +122,19 @@ public class ScenarioManager : MonoBehaviour
 			{
 				Debug.LogFormat("Background music will change to {0}", m.Groups[1].Value);
 				waitingForContentFromCharacter = false;
+				waitingForFullOptions = false;
+				continue; // Go to next line.
+			}
+
+			// Check if line is a conversation link.
+			r = new Regex(patConversationLink, RegexOptions.IgnoreCase);
+			m = r.Match(line);
+			if (m.Success) 
+			{
+				Debug.LogFormat("Next conversation set to {0}", m.Groups[1].Value);
+				waitingForContentFromCharacter = false;
+				waitingForFullOptions = false;
+				conversation.nextConversation = m.Groups[1].Value;
 				continue; // Go to next line.
 			}
 
@@ -155,7 +176,9 @@ public class ScenarioManager : MonoBehaviour
 
 					Debug.LogFormat("{0} will {1} {2} {3} at {4} with pose {5}", characterName, easeMode, inOut, speed, screenPosition, characterPose);
 				}
+
 				waitingForContentFromCharacter = false;
+				waitingForFullOptions = false;
 				continue; // Go to next line.
 			}
 
@@ -173,6 +196,8 @@ public class ScenarioManager : MonoBehaviour
 					conversation.AddAction(action);
 					Debug.LogFormat("Will write paragraph: {0}", action.message);
 					waitingForContentFromCharacter = true;
+					waitingForFullOptions = false;
+					continue; // Go to next line.
 				}
 			} else {
 				// Check if line is a character switch command.
@@ -184,10 +209,42 @@ public class ScenarioManager : MonoBehaviour
 					conversation.AddAction(action);
 					Debug.LogFormat("Will switch to character: {0}", action.characterName);
 					waitingForContentFromCharacter = true;
+					waitingForFullOptions = false;
 					speakingCharacterName = action.characterName;
+					continue; // Go to next line.
+				}
+			}
+
+			if (waitingForFullOptions) {
+				// Check if line is an option.
+				r = new Regex(patOption, RegexOptions.IgnoreCase);
+				m = r.Match(line);
+				if (m.Success) {
+					string optionLabel = m.Groups[1].Value;
+					string optionResultConversation = m.Groups[2].Value;
+					currentOptionsAction.AddOption(optionLabel, optionResultConversation, conversation);
+					Debug.LogFormat("Added option: {0} for result {1} to options panel.", optionLabel, optionResultConversation);
+					waitingForFullOptions = true;
+					waitingForContentFromCharacter = false;
+					continue; // Go to next line.
+				}
+			} else {
+				// Check if line is an options dialog command.
+				r = new Regex(patOptionCommand, RegexOptions.IgnoreCase);
+				m = r.Match(line);
+				if (m.Success) {
+					Debug.LogFormat("ScenarioManager:: Creating options dialog.");
+					currentOptionsAction = new ShowOptionsConversationAction();
+					conversation.AddAction(currentOptionsAction);
+					waitingForFullOptions = true;
+					waitingForContentFromCharacter = false;
+					continue; // Go to next line.
 				}
 			}
 		}
+
+		waitingForContentFromCharacter = false;
+		waitingForFullOptions = false;
 
 		conversations.Add(id, conversation);
 	}

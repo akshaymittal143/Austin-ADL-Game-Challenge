@@ -58,7 +58,7 @@
 ~ "Normal Yu" speaks
 - Hey! Player! Can't you read our labels???
 
-~ change pose for "Evil Yu" to "Confident"
+~ character "Evil Yu" with pose "Confident"
 
 ~ "Evil Yu" speaks
 - HAHAH!!! No the player is right, I AM the real Yu!

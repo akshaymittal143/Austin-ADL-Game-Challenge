@@ -8,7 +8,7 @@ public class WriteParagraphConversationAction : ConversationAction
 {
 	public string message;
 	public string speakingCharacter;
-	public float timeBetweenCharacters = 0.06f;
+	public float timeBetweenCharacters = 0.01f;
 
 	public TMP_Text dialogTextBox;
 

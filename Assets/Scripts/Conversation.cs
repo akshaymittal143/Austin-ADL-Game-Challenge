@@ -14,7 +14,9 @@ public class Conversation
 		// Execute each action sequentially.
 		for (int i = 0; i < actionList.Count; ++i) {
 			currentAction = actionList[i];
+			Debug.LogFormat("Conversation:: executing action " + i);
 			yield return currentAction.Execute();
+			Debug.LogFormat("Conversation:: ended action " + i);
 		}
 	}
 
