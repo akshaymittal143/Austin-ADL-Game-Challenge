@@ -1,5 +1,5 @@
 # Overview
-Sage is a game about conquering hate using love, understanding and compassion. The main character - you - join will join your magical cat Sage on an adventure that takes you through the City of Townsville as you encounter people paralyzed by hate, fear, and anger. As you speak to them and heal them with your words, the city becomes a better place for everyone. But watch you, evil still lurks as Edward Hatt looks to spread his hate to the citizens of Townsville. 
+Sage is a game about conquering hate using love, understanding and compassion. The main character - you - join will join your magical cat Sage on an adventure that takes you through the City of Townsville as you encounter people paralyzed by hate, fear, and anger. As you speak to them and heal them with your words, the city becomes a better place for everyone. But watch out, evil still lurks as Edward Hatt looks to spread his hate to the citizens of Townsville. 
 
 # Technology Overview
 The Unity Container (Unity) is a lightweight, extensible dependency injection container. It facilitates building loosely coupled applications and provides developers with the following advantages:
