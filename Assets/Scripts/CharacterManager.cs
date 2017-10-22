@@ -26,9 +26,9 @@ public class CharacterManager : MonoBehaviour
 	{
 		Image img = activeCharacters[characterName];
 		img.sprite = Resources.Load<Sprite>(
-			string.Format("Character Poses/{0}/{0}_{1}", characterName, characterPose)
+			string.Format("Character Poses/{0}/{0} {1}", characterName, characterPose)
 		);
-		Debug.Log("Attempted to load: " + string.Format("Character Poses/{0}/{0}_{1}", characterName, characterPose));
+		Debug.Log("Attempted to load: " + string.Format("Character Poses/{0}/{0} {1}", characterName, characterPose));
 	}
 
 	public void LoadCharacter(RootPosition rootPosition, string characterName, string pose)
@@ -47,10 +47,10 @@ public class CharacterManager : MonoBehaviour
 				characterLabel.SetActive(true);
 				Debug.Log("Found character image location: " + img);
 				img.sprite = Resources.Load<Sprite>(
-					string.Format("Character Poses/{0}/{0}_{1}", characterName, pose)
+					string.Format("Character Poses/{0}/{0} {1}", characterName, pose)
 				);
 
-				Debug.Log("Attempted to load: " + string.Format("Character Poses/{0}/{0}_{1}", characterName, pose));
+				Debug.Log("Attempted to load: " + string.Format("Character Poses/{0}/{0} {1}", characterName, pose));
 				img.enabled = true;
 				activeCharacters.Add(characterName, img);
 				break;
@@ -66,7 +66,7 @@ public class CharacterManager : MonoBehaviour
 				nameLabel.enabled = true;
 				characterLabel.SetActive(true);
 				img.sprite = Resources.Load<Sprite>(
-					string.Format("Character Poses/{0}/{0}_{1}", characterName, pose)
+					string.Format("Character Poses/{0}/{0} {1}", characterName, pose)
 				);
 				img.enabled = true;
 				activeCharacters.Add(characterName, img);
@@ -83,7 +83,7 @@ public class CharacterManager : MonoBehaviour
 				nameLabel.enabled = true;
 				characterLabel.SetActive(true);
 				img.sprite = Resources.Load<Sprite>(
-					string.Format("Character Poses/{0}/{0}_{1}", characterName, pose)
+					string.Format("Character Poses/{0}/{0} {1}", characterName, pose)
 				);
 				img.enabled = true;
 				activeCharacters.Add(characterName, img);

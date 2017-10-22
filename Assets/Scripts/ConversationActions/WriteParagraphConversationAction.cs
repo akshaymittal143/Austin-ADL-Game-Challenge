@@ -17,7 +17,7 @@ public class WriteParagraphConversationAction : ConversationAction
 	public override IEnumerator Execute()
 	{
 		// Clear text box.
-		dialogTextBox.text = speakingCharacter + ": ";
+		dialogTextBox.text = "[" + speakingCharacter + "]\t";
 
 		// Do for all characters.
 		int	 messageIndex = 0;

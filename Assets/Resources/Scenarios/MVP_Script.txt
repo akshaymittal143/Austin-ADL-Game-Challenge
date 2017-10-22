@@ -1,0 +1,393 @@
+"1" ---
+
+~ use dialog background "neutral"
+~ use music "no music"
+
+~ "Player" speaks
+- Zzzzzzz
+
+~ go to conversation "2"
+
+---
+
+"2" ---
+
+~ use scenario background "alarm clock"
+~ use dialog background "neutral"
+~ use music "alarm"
+
+~ "Narrator" speaks
+- Wake up… it's time to get up for class.
+- You need to get ready to go!
+
+~ go to conversation "3"
+
+---
+
+"3" ---
+
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+~ use music "Bird_sound"
+
+~ go to conversation "4"
+
+---
+
+"4" ---
+
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+~ use music "Bird_sound"
+
+~ character "Player" eases in left normally with pose "neutral"
+
+~ "Player" speaks
+- You have a new text message from Keith.
+- It reads: Hey buddy, mind walking with me to school?  Kinda spooked by Trevor... kept sending me awful messages on Book of Faces yesterday.  I'm freaked out.
+
+~ go to conversation "5"
+
+---
+
+"5" ---
+
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+~ use music "Bird_sound"
+
+~ character "Keith" eases in right normally with pose "grateful"
+
+~ "Keith" speaks
+- Thanks for coming, Player.  I’m scared Trevor might do something…
+
+~ show options
+- Say nothing => "6"
+- Say something comforting => "7"
+- Tell Keith to fight back => "8"
+
+---
+
+"6" ---
+~ "Player" speaks
+- …
+
+~ character "Keith" with pose "neutral"
+~ "Keith" speaks
+- Yeah… I wish I could just skip school…
+
+~ show options
+- Say something comforting => "7"
+- Tell Keith to fight back => "8"
+---
+
+"7" ---
+~ "Player" speaks
+- I’m sorry, Keith.  I’m here if you ever need anything.
+
+~ "Keith" speaks
+- Thanks, Player.  I’m glad to have you as a friend.
+
+~ go to conversation "9"
+---
+
+"8" ---
+~ "Player" speaks
+- Why don’t you just fight back?  You can’t keep running forever.
+
+~ character "Keith" with pose "upset"
+~ "Keith" speaks
+- Easy for you to say!  I can’t seem to get away.  It’s constant, at school, online… it’s all I think about.  I’m afraid.
+
+~ show options
+- Say something comforting => "7"
+---
+
+"9" ---
+~ character "Keith" with pose "neutral"
+
+~ "Keith" speaks
+- We should get going or we’ll be late, c’mon.
+
+~ load scene "Scenes/Overworld"
+---
+
+"10" ---
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+~ use music "Ominous_song.mp3"
+
+~ character "Keith" eases in left normally with pose "nervous"
+~ "Keith" speaks
+- Uh oh…
+
+~ character "Trevor" eases in right normally with pose "aggressive"
+~ "Trevor" speaks
+- Hey, look who it is… I see you have your friend with you.
+
+~ "Keith" speaks
+- Oh, hey, Trevor…
+
+~ show options
+- Say Nothing => "11"
+- Support Keith => "12"
+---
+
+"11" ---
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+~ character "Keith" fades out
+~ character "Player" fades in left normally with pose "main girl neutral.png"
+
+~ "Player" speaks
+- …
+~ "Trevor" speaks
+- What do you want?  My issue is with Keith.
+
+~ "Player" speaks
+- …
+
+~ "Trevor" speaks
+- …
+- I’ll see you around, Keith.
+
+~ go to conversation "13"
+
+---
+
+"12" ---
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+~ character "Keith" fades out
+~ character "Player" fades in left normally with pose "main girl neutral.png"
+
+~ "Player" speaks
+- I want you to leave Keith alone.  You have no reason to do this.
+
+~ "Trevor" speaks
+- This is none of your business.
+
+~ "Player" speaks
+- Yes, it is.  Keith is my friend.
+
+~ "Trevor" speaks
+- I don't need this.
+
+~ character "Trevor" fades out fast
+
+~ go to conversation "13"
+---
+
+"13" ---
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+~ character "Keith" fades in right normally with pose "grateful"
+
+~ "Keith" speaks
+- Thanks for your support, Player.  That could have been a lot worse…
+- Oh!  My phone is ringing, I gotta go.
+
+~ character "Keith" fades out fast
+
+~ load scene "Scenes/Overworld"
+---
+
+
+
+
+"14"---
+~ use scenario background "hypnotic/psychedelic"
+~ use dialog background "neutral"
+~ use music "Hypnotize_sound.aiff"
+
+~ character "Player" fades in normally on right with pose "main girl neutral.png"
+~ character "Sage" eases in normally on left with pose "cat.png"
+
+~ "Sage" speaks
+- Player...
+- You handled that well.
+- Keith needed an ally, and you were there for him.
+- Being an ally can be multiple things.  Keith needed support and you provided it to him.
+
+~ character "Player" pose "main girl shocked.png"
+
+~ "Player" speaks
+- !!!
+
+~ "Sage" speaks
+- No need to be alarmed.
+- My name is Sage.  I’ve been watching over you.  This town is on the brink of destruction.  The fate of the world hangs on what happens in this town today.
+- Are you aware of Edward Hatt?
+
+~ show options
+- Say Nothing => "15"
+- Say No => "16"
+---
+
+"15"---
+~ use scenario background "hypnotic/psychedelic"
+~ use dialog background "neutral"
+~ use music "Hypnotize_sound.aiff"
+
+~"Sage speaks
+- You should be.
+- Edwart Hatt is not who you think he is.  He is a powerful demon lord seeking to grow in power.
+- He grows in power as more and more people feel hatred burning in their hearts.
+- Right meow, your town is his final stop on his quest for power.  If he gains enough power he will destroy the world.
+- We must stop him!
+- I am here to stop him, but need your help to do it.  Edward Hatt is trying to spread hatred and divide your community. We need to spread kindness, love, and joy to fight him.
+- I know you have questions about me.  We will answer them another time.
+- Meow, I will grant you the power you need to make a difference as an ally to all.
+
+~ go to conversation "17"
+---
+
+"16"—
+~ use scenario background "hypnotic/psychedelic"
+~ use dialog background "neutral"
+~ use music "Hypnotize_sound.aiff"
+
+~"Sage speaks
+- You should be.
+- Edwart Hatt is not who you think he is.  He is a powerful demon lord seeking to grow in power.
+- He grows in power as more and more people feel hatred burning in their hearts.
+- Right meow, your town is his final stop on his quest for power.  If he gains enough power he will destroy the world.
+- We must stop him!
+- I am here to stop him, but need your help to do it.  Edward Hatt is trying to spread hatred and divide your community. We need to spread kindness, love, and joy to fight him.
+- I know you have questions about me.  We will answer them another time.
+- Meow, I will grant you the power you need to make a difference as an ally to all.
+
+~ go to conversation "17"
+---
+
+"17" ---
+~ use scenario background "hypnotic/psychedelic"
+~ use dialog background "neutral"
+~ use music "Hypnotize_sound.aiff"
+
+~character "Player" pose "main girl uncomfortable.png"
+
+~"Sage" speaks
+- I have granted you the power to explore minds.
+- You can use this power to spread kindness and bring people together.  If you do that, we will remove the hatred from this town and stop Edward Hatt’s evil plans.
+
+~ load scene "Scenes/Overworld"
+---
+
+
+
+
+
+"18"---
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+~ use music "TenselyOminous_song.mp3"
+~ character "Player" fades in normally on left with pose "main girl neutral.png"
+~ character "Trevor" eases in normally on right with pose "angry"
+
+~ "Trevor" speaks
+- What do you want?!
+
+~ show options
+- Say Nothing => "19"
+- I just want to talk => "20"
+- Read Trevor’s Mind => "21"
+---
+
+"19" ---
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+
+~ "Player" speaks
+- …
+
+~ "Trevor" speaks
+- Leave me alone.
+
+~ show options
+- I just want to talk => "20"
+- Read Trevor’s Mind => "21"
+---
+
+"20" ---
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+
+~ "Trevor" speaks
+- I’m not interested in talking to you.  Leave me alone.
+
+~ show options
+- Read Trevor’s Mind => "21"
+---
+
+"21" ---
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+~ use music "calmMorning_song.mp3"
+
+~ "Trevor" speaks
+- What if the only reason people like me is because of my money?  Are they pretending to like me?
+- I can’t stand that Keith guy.  He has real friends.
+
+~ show options
+- Discuss Trevor’s Friends => "22"
+---
+
+"22" ---
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+
+~ "Trevor" speaks
+- My friends?  What about my friends?  They’re… great.  I already told you to go away, why are you still here?
+
+~ show options
+- Keep pressing => "23"
+---
+
+"23" ---
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+
+~ "Trevor" speaks
+- Alright, fine.  I don’t HAVE friends, is that what you want to hear?  I’m sick of seeing you and Keith and your friends always having a good time.
+
+~ show options
+- So that’s why you’re mean to Keith... => "24"
+---
+
+"24" ---
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+
+~ character "Trevor" with pose "apologetic"
+~ "Trevor" speaks
+- I know, I’m sorry I’ve been such a jerk.  Truth is I’m really lonely at school.
+
+~ show options
+- I’ll be your friend if you promise to stop being mean to people => "25"
+---
+
+"25" ---
+~ use scenario background "neighborhood"
+~ use dialog background "neutral"
+
+~ "Trevor" speaks
+- ...really?  I don’t deserve that.  Thanks for talking with me.
+
+~ character "Trevor" eases out normally on right
+
+~ character "Sage" eases in normally on right with pose "cat.png"
+
+
+~ use scenario background "hypnotic/psychedelic"
+~ use dialog background "neutral"
+~ use music "Hypnotize_sound.aiff"
+
+~ "Sage" speaks
+- Well done, Player.
+- You taught Trevor a valuable lesson, and proved a powerful ally for Keith.  It would have been easy to judge Trevor without getting to know the reason he was acting that way towards Keith.
+- You’ve decreased the level of hate in your town, weakening Edward Hutt.
+- There are a lot more people in town that need an ally, Player.  We must prevent Edward Hutt from taking over!
+
+~ load scene "Scenes/Overworld"
+---

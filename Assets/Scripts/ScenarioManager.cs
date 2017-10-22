@@ -13,13 +13,17 @@ public class ScenarioManager : MonoBehaviour
 	public TMP_Text dialogText;
 	public Image dialogBackground;
 
+	public string scriptName;
+
 	Conversation currentConversation;
 
 	ShowOptionsConversationAction currentOptionsAction;
 
+	public string startConversation = "1";
+
 	void Awake()
 	{
-		LoadScenario("Scenario_A");
+		LoadScenario(scriptName);
 	}
 
 	void Start()
@@ -29,7 +33,7 @@ public class ScenarioManager : MonoBehaviour
 
 	IEnumerator StartScenario()
 	{
-		string nextConversation = "1";
+		string nextConversation = startConversation;
 		while (nextConversation != "") {
 			print("Running conversation: " + nextConversation);
 			currentConversation = conversations[nextConversation];
