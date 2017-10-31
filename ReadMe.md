@@ -1,5 +1,7 @@
 # Overview
 
+ To play the game -> [Ali Tale](https://gamejolt.com/games/ali-tale/292086)
+
 “Sage” is a game about conquering hate using love, understanding and compassion. The main character - you - will join a magical cat, Sage, on an adventure as an ally for the City of Townsville, where you encounter people paralyzed by hate, fear, and anger. As you speak to them and heal them with your ally abilities, the city becomes a better place for everyone. But be careful, evil still lurks as Edward Hatt looks to spread his hatred to the citizens of Townsville. 
 
 Players will encounter a variety of citizens and situations in the City of Townsville.  The player will act as an ally, educating fellow citizens on how to be an ally in a variety of contexts.
