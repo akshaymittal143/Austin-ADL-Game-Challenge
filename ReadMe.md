@@ -1,4 +1,5 @@
-Entry for #allyjam . A story teaching what it means to be an Ally.  
+Entry for #allyjam . A story teaching what it means to be an Ally. 
+![alt text](https://github.com/akshaymittal143/Austin-ADL-Game-Challenge/blob/master/Images/ADL%20Game%20Jam.jpeg)
 
 [Download game from GameJolt](https://gamejolt.com/games/ali-tale/292086)
 
